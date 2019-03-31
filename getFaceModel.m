@@ -1,7 +1,7 @@
 function [model,model2] = getFaceModel()
 clear all;
 close all;
-ori = imread('training_face_image/train9.jpg');
+ori = imread('training_face_image/train11.jpg');
 %ori = imread('face2.jpg');
 hsv_img = rgb2hsv(ori);
 H = hsv_img(:,:,1);
@@ -98,7 +98,7 @@ arr(3,:) = [];
   end
   S_domain = [];
   for q = 1 : 10000
-      if(arr2(2,q)<500)
+      if(arr2(2,q)<30)
           break;
       end
       if isempty(S_domain)

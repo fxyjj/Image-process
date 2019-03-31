@@ -26,6 +26,8 @@ subplot(2,2,1);
 imshow(img);
 subplot(2,2,2);
 imshow(img2);
+subplot(2,2,3);
+imshow(testImage);
 %img = testImg_hsv(:,:,3);
 
 
