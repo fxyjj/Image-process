@@ -1,5 +1,5 @@
 %function img = getBinarizedFaceImage(testImage,faceModel)
-[H_faceModel,S_faceModel] = getFaceModel();
+C = getF();
 testImage = imread('face2.jpg');
 testImg_hsv = rgb2hsv(testImage);
 [x,y,z] = size(testImage);
@@ -10,15 +10,10 @@ S = testImg_hsv(:,:,2);
 V = testImg_hsv(:,:,3);
 for i = 1 : x
     for j = 1 : y
-          if(H_faceModel(1,1) <= H(i,j) <= H_faceModel(1,length(H_faceModel)))
+          if(C(1,1) <= H(i,j) && H(i,j) <= C(1,2) && C(1,3)<=S(i,j) && C(1,4)>= S(i,j))
              img2(i,j) = 255;
              %testImg_hsv(i,j,3) = 255;
           end
-        if(S_faceModel(1,1) <= S(i,j) <= S_faceModel(1,length(S_faceModel)))
-           img(i,j) = 255;
-           %testImg_hsv(i,j,3) = 255;
-        end 
-        V(i,j) = 1;
     end
 end
 figure;
