@@ -1,19 +1,15 @@
-%function img = BF(I,sizef,s1,s2)
-I = ori_gray;
-s1 = 100;
-s2 = 100;
-sizef = 3;
+function img = BF(I,sizef,s1,s2)
 sigmaG = s1;
-sigmaR = s2;
-f_coeff = G_Filter(sigmaG,sizef);
+sugmaR = s2;
+f_coeff = Gaussain_filter(sigmaG,sizef);
 offset = (sizef + 1)/2;
 [r,c] = size(I);
 new_I = zeros(r+2*(offset-1),c+2*(offset-1));
 new_I(offset:r+offset-1,offset:c+offset-1) = I;
 img = zeros(r,c);
-for i = offset : r+offset-1
-    for j = offset : c+offset-1
-        lf = zeros(sizef,sizef);
+for i = 2 : r+1
+    for j = 2 : c+1
+        lf = zeros(5,5);
         cen = new_I(i,j);
         for x = 1 : sizef
             for y = 1 : sizef
@@ -23,10 +19,5 @@ for i = offset : r+offset-1
         all_sum = 0;
         for k = 1 : sizef
             for l = 1 : sizef
-                all_sum = all_sum + new_I(i+k-offset,j+l-offset)*lf(k,l);
-            end
-        end
-        genzi = sum(sum(lf));
-        img(i-offset+1,j-offset+1) = all_sum/genzi;
+                all
     end
-end
