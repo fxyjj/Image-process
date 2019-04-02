@@ -4,7 +4,7 @@ function img = Anisotropic(I,sizef)
 % I__ = rgb2gray(I_);
 % I = imnoise(I__,'gaussian',0,20^2/225^2);
 
-sizef = 3;
+%sizef = 3;
 [r,c] = size(I);
 offset = (sizef+1)/2;
 new_I = zeros(r+sizef-1,c+sizef-1);

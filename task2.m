@@ -1,12 +1,9 @@
 % 3 x 3 mean filter
-Mean_filter = zeros(3,3,3);
+Mean_filter = zeros(3,3);
 for i = 1 : 3
-    for j = 1 : 3
-        Mean_filter(i,j,1) = 1/9;
-        Mean_filter(i,j,2) = 1/9;
-        Mean_filter(i,j,3) = 1/9;
-    end
-    
+    Mean_filter(i,1) = 1/9;
+    Mean_filter(i,2) = 1/9;
+    Mean_filter(i,3) = 1/9;
 end
 
 % 5 x 5 Gaussian filter with ∂ = 1
@@ -31,12 +28,14 @@ ori_saltpepper_noise = imnoise(ori_1,'salt & pepper',0.1);
 
 %convolute picture with 7 x 7 gaussian filter with ∂ = 2;
 fter = G_Filter(2,7);
-fter_3 = zeros(7,7,3);
-fter_3(:,:,1) = fter;
-fter_3(:,:,2) = fter;
-fter_3(:,:,3) = fter;
-img_conv_gaussian = convn(ori_gaussian_noise,fter_3,'same');
-img_conv_salt = convn(ori_saltpepper_noise,fter_3,'same');
+
+img_conv_gaussian(:,:,1) = conv2(ori_gaussian_noise(:,:,1),fter,'same');
+img_conv_gaussian(:,:,2) = conv2(ori_gaussian_noise(:,:,2),fter,'same');
+img_conv_gaussian(:,:,3) = conv2(ori_gaussian_noise(:,:,3),fter,'same');
+
+img_conv_salt(:,:,1) = conv2(ori_saltpepper_noise(:,:,1),fter,'same');
+img_conv_salt(:,:,2) = conv2(ori_saltpepper_noise(:,:,2),fter,'same');
+img_conv_salt(:,:,3) = conv2(ori_saltpepper_noise(:,:,3),fter,'same');
 
 
 % applying to the five implemented filters on the destorted images
@@ -44,32 +43,39 @@ img_conv_salt = convn(ori_saltpepper_noise,fter_3,'same');
 % 3 x 3 mean filter:
 
 % ---- deal with gaussian noise image ---- %
-  g_img_by_Mfter = convn(ori_gaussian_noise,Mean_filter,'same');
+  g_img_by_Mfter(:,:,1) = conv2(ori_gaussian_noise(:,:,1),Mean_filter,'same');
+  g_img_by_Mfter(:,:,2) = conv2(ori_gaussian_noise(:,:,2),Mean_filter,'same');
+  g_img_by_Mfter(:,:,3) = conv2(ori_gaussian_noise(:,:,3),Mean_filter,'same');
 
   % ---- deal with salt & pepper noise image ---- %
-  s_img_by_Mfter = convn(ori_saltpepper_noise,Mean_filter,'same');
+  s_img_by_Mfter(:,:,1) = conv2(ori_saltpepper_noise(:,:,1),Mean_filter,'same');
+  s_img_by_Mfter(:,:,2) = conv2(ori_saltpepper_noise(:,:,2),Mean_filter,'same');
+  s_img_by_Mfter(:,:,3) = conv2(ori_saltpepper_noise(:,:,3),Mean_filter,'same');
 
-  
+% === figure show === %
+% === figure show === %
+
 % 5 x 5 gaussian filter with ∂ = 1:
   g_filter = G_Filter(1,5);
-  g_filter_3 = zeros(5,5,3);
-  g_filter_3(:,:,1) = g_filter;
-  g_filter_3(:,:,2) = g_filter;
-  g_filter_3(:,:,3) = g_filter;
+  
   % ---- deal with gaussain noise image ---- %
-  g_img_by_Gfter = convn(ori_gaussian_noise,g_filter_3,'same');
+  g_img_by_Gfter(:,:,1) = conv2(ori_gaussian_noise(:,:,1),g_filter,'same');
+  g_img_by_Gfter(:,:,2) = conv2(ori_gaussian_noise(:,:,2),g_filter,'same');
+  g_img_by_Gfter(:,:,3) = conv2(ori_gaussian_noise(:,:,3),g_filter,'same');
   
   % ---- deal with salt & pepper noise image ---- %
-  s_img_by_Gfter = convn(ori_saltpepper_noise,g_filter_3,'same');
+  s_img_by_Gfter(:,:,1) = conv2(ori_saltpepper_noise(:,:,1),g_filter,'same');
+  s_img_by_Gfter(:,:,2) = conv2(ori_saltpepper_noise(:,:,2),g_filter,'same');
+  s_img_by_Gfter(:,:,3) = conv2(ori_saltpepper_noise(:,:,3),g_filter,'same');
+  
   % === figure show === %
   figure;
   subplot(1,2,1);
-  title('Origin');
   imshow(ori_gaussian_noise);
+  title('Origin');
   subplot(1,2,2);
-  title('after_Conv');
   imshow(uint8(g_img_by_Gfter));
-  
+  title('after Conv');
 % % 3 x 3 meidian filter:
 % 
 %   % ---- deal with gaussain noise image ---- %
