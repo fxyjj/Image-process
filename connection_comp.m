@@ -1,5 +1,5 @@
 % function c_img = connection_comp(I,t)%receive only binarized image
-I = img2dd;
+I = img2eee;
 t = 1000;
 [r,c] = size(I);
 m_img = zeros(r,c);

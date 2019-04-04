@@ -23,8 +23,8 @@ end
 img2d = dilation(img2);
 img2dd = dilation(img2d);
 img2e = erosion(img2);
-% img2ee = erosion(img2e);
-% img2eee = erosion(img2ee);
+img2ee = erosion(img2e);
+img2eee = erosion(img2ee);
 figure;
 subplot(2,2,1);
 imshow(img2e);
