@@ -1,7 +1,7 @@
-function C = getF()
-clear all;
-close all;
-ori = imread('training_face_image/train10.jpg');
+function C = getFaceModel(ori)
+% clear all;
+% close all;
+% ori = imread(fileURL);
 %ori = imread('face2.jpg');
 hsv_img = rgb2hsv(ori);
 % cluster_H = zeros(3,20);

@@ -1,9 +1,9 @@
-% function c_img = connection_comp(I,t)%receive only binarized image
-I = img2eee;
-t = 100;
+function m_img = connection_comp(I,t)%receive only binarized image
+% I = img2eee;
+% t = 100;
 [r,c] = size(I);
 m_img = zeros(r,c);
-c_img = zeros(r,c);
+% c_img = zeros(r,c);
 char = 2;
 for i = 2 : r
     for j = 2 : c
@@ -48,33 +48,21 @@ for x = 2 : r-1
                    end
                end
            end
-       end
-           
-               
+       end        
     end
 end
-
-
-
-
-
-
-
-
-
-
 
 for i = 2 : max(max(m_img))
     if sum(m_img(:)==i) < t
         m_img(m_img==i) = 0;
     end
 end
- %c_img(c_img ~= 0) = 1;
- figure;
- imshow(m_img);
- figure;
- imshow(I);
-% end
+ m_img(m_img ~= 0) = 1;
+%  figure;
+%  imshow(m_img);
+%  figure;
+%  imshow(I);
+ end
     
 
 

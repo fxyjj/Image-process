@@ -1,5 +1,5 @@
 function img = BF(I,sizef,s1,s2)
-I = ori_gray;
+% I = ori_gray;
 %s1 = 100;
 %s2 = 100;
 %sizef = 3;

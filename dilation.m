@@ -1,5 +1,5 @@
 function d_img = dilation(I) %receive only binaried image
-sizef = 3;
+% sizef = 3;
 [r,c] = size(I);
 d_img = zeros(r,c);
 for i = 2 : r-1

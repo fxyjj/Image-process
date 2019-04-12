@@ -1,5 +1,5 @@
 function e_img = erosion(I)%only receive binarized image
-sizef = 3;
+% sizef = 3;
 [r,c] = size(I);
 e_img = zeros(r,c);
 e_img(:,:) = 1;

@@ -162,14 +162,14 @@ figure;
  % 5 x 5 bilteral filter with ∂s = 1 and ∂r = 10:
  
    % ---- deal with gaussain noise image ---- %
-   g_img_by_BFfter(:,:,1) = BF(ori_gaussian_noise(:,:,1),5,100,100);
-   g_img_by_BFfter(:,:,2) = BF(ori_gaussian_noise(:,:,2),5,100,100);
-   g_img_by_BFfter(:,:,3) = BF(ori_gaussian_noise(:,:,3),5,100,100);
+   g_img_by_BFfter(:,:,1) = BF(ori_gaussian_noise(:,:,1),5,1,10);
+   g_img_by_BFfter(:,:,2) = BF(ori_gaussian_noise(:,:,2),5,1,10);
+   g_img_by_BFfter(:,:,3) = BF(ori_gaussian_noise(:,:,3),5,1,10);
    
    % ---- deal with salt & pepper noise image ---- %
-   s_img_by_BFfter(:,:,1) = BF(ori_saltpepper_noise(:,:,1),5,100,100);
-   s_img_by_BFfter(:,:,2) = BF(ori_saltpepper_noise(:,:,2),5,100,100);
-   s_img_by_BFfter(:,:,3) = BF(ori_saltpepper_noise(:,:,3),5,100,100);
+   s_img_by_BFfter(:,:,1) = BF(ori_saltpepper_noise(:,:,1),5,1,10);
+   s_img_by_BFfter(:,:,2) = BF(ori_saltpepper_noise(:,:,2),5,1,10);
+   s_img_by_BFfter(:,:,3) = BF(ori_saltpepper_noise(:,:,3),5,1,10);
    
    % === figure show === %
    figure;
@@ -177,27 +177,13 @@ figure;
   imshow(ori_gaussian_noise);
   title('Origin');
   subplot(2,2,2);
-  imshow(uint8(g_img_by_BFfter));
+  imshow(uint8(g_img_by_Bfter));
   title('after BFfter Conv');
   subplot(2,2,3);
   imshow(ori_saltpepper_noise);
   title('Origin');
   subplot(2,2,4);
-  imshow(uint8(s_img_by_BFfter));
-  title('after BFofter Conv');
-  
-  close all;
-   figure;
-  imshow(ori_gaussian_noise);
-  title('Origin');
-  figure;
-  imshow(uint8(g_img_by_BFfter));
-  title('after BFfter Conv');
-  figure;%subplot(2,2,3);
-  imshow(ori_saltpepper_noise);
-  title('Origin');
-  figure;%subplot(2,2,4);
-  imshow(uint8(s_img_by_BFfter));
+  imshow(uint8(s_img_by_Bfter));
   title('after BFofter Conv');
 
   
