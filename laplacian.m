@@ -9,7 +9,7 @@ lapf = [0,1,0;1,-4,1;0,1,0];
 sharped_img = conv2(ori,lapf,'same');
 for i = 1 : r
     for j = 1 : c
-       new_img(i,j) = ori(i,j) - sharped_img(i,j);
+       new_img1(i,j) = ori(i,j) - sharped_img(i,j);
     end
 end
           close all;
@@ -17,7 +17,7 @@ end
            figure;
            imshow(ori);
            figure;
-           imshow(new_img);
+           imshow(new_img1);
     %robert operator;
 
 sharped_img2 = zeros(r,c);
