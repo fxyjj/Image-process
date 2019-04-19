@@ -1,6 +1,6 @@
 %Canny
-sigma = 2.3;
-sizef = 5;
+sigma = 2;
+sizef = 7;
 offset = (sizef+1)/2;
 gfilter = fspecial('gaussian',sizef,sigma);
 ori = rgb2gray(imread('retina_images_01_10/1.tif'));
