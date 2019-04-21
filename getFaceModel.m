@@ -34,13 +34,15 @@ for i = 1 : x
         end
     end
 end
+figure;
 bar3(mat);
+
 maxR = max(max(mat));
 [Cs,Ce] = find(mat == maxR);
 mat(Cs,Ce) = 0;
 [Cs2,Ce2] = find(mat == max(max(mat)));
 Hc = [s(1,Cs),e(1,Cs)];
 Sc = [s(1,Ce),e(1,Ce)];
-Hc1 = [s(1,Cs2),e(1,Ce2)];
+Hc1 = [s(1,Cs2),e(1,Cs2)];
 Sc1 = [s(1,Ce2),e(1,Ce2)];
 C = [Hc,Sc;Hc1,Sc1];

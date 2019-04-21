@@ -1,4 +1,5 @@
 % 3 x 3 mean filter
+close all;
 Mean_filter = zeros(3,3);
 for i = 1 : 3
     Mean_filter(i,1) = 1/9;
@@ -22,10 +23,12 @@ end
 %add gaussian noise with ∂ = 20 on RGB channals of lena.jpg
 ori_1 = imread('lena.jpg');
 ori_gaussian_noise = imnoise(ori_1,'gaussian',0,20^2/225^2);
-
+figure;
+imshow(ori_gaussian_noise);
 %add salt & pepper noise with 10% intensity on RGB channals of lena.jpg
 ori_saltpepper_noise = imnoise(ori_1,'salt & pepper',0.1);
-
+figure;
+imshow(ori_saltpepper_noise);
 %convolute picture with 7 x 7 gaussian filter with ∂ = 2;
 fter = G_Filter(2,7);
 
@@ -37,19 +40,20 @@ img_conv_salt(:,:,1) = conv2(ori_saltpepper_noise(:,:,1),fter,'same');
 img_conv_salt(:,:,2) = conv2(ori_saltpepper_noise(:,:,2),fter,'same');
 img_conv_salt(:,:,3) = conv2(ori_saltpepper_noise(:,:,3),fter,'same');
 
-% figure;
-%   subplot(2,2,1);
-%   imshow(ori_gaussian_noise);
-%   title('Origin');
-%   subplot(2,2,2);
-%   imshow(uint8(img_conv_gaussian));
-%   title('after g Conv');
-%   subplot(2,2,3);
-%   imshow(ori_saltpepper_noise);
-%   title('Origin');
-%   subplot(2,2,4);
-%   imshow(uint8(img_conv_salt));
-%   title('after s Conv');
+ figure;
+   subplot(1,2,1);
+   imshow(ori_gaussian_noise);
+   title('Origin');
+   subplot(1,2,2);
+   imshow(uint8(img_conv_gaussian));
+   title('Gaussian noise after Conv');
+ figure;
+   subplot(1,2,1);
+   imshow(ori_saltpepper_noise);
+   title('Origin');
+   subplot(1,2,2);
+   imshow(uint8(img_conv_salt));
+   title('Saltpepper after Conv');
 % applying to the five implemented filters on the destorted images
 
 % 3 x 3 mean filter:
@@ -66,18 +70,19 @@ img_conv_salt(:,:,3) = conv2(ori_saltpepper_noise(:,:,3),fter,'same');
 
 % === figure show === %
 figure;
-  subplot(2,2,1);
+  subplot(1,2,1);
   imshow(ori_gaussian_noise);
   title('Origin');
-  subplot(2,2,2);
+  subplot(1,2,2);
   imshow(uint8(g_img_by_Mfter));
-  title('after Mfter Conv');
-  subplot(2,2,3);
+  title('Guaasian noise after Mfter Conv');
+figure;
+  subplot(1,2,1);
   imshow(ori_saltpepper_noise);
   title('Origin');
-  subplot(2,2,4);
+  subplot(1,2,2);
   imshow(uint8(s_img_by_Mfter));
-  title('after Mfter Conv');
+  title('Saltpepper noise after Mfter Conv');
 % === figure show === %
 
 % 5 x 5 gaussian filter with ∂ = 1:
@@ -95,18 +100,19 @@ figure;
   
   % === figure show === %
 figure;
-  subplot(2,2,1);
+  subplot(1,2,1);
   imshow(ori_gaussian_noise);
   title('Origin');
-  subplot(2,2,2);
+  subplot(1,2,2);
   imshow(uint8(g_img_by_Gfter));
-  title('after Gfter Conv');
-  subplot(2,2,3);
+  title('Gaussian noise after Gfter Conv');
+figure;  
+  subplot(1,2,1);
   imshow(ori_saltpepper_noise);
   title('Origin');
-  subplot(2,2,4);
+  subplot(1,2,2);
   imshow(uint8(s_img_by_Gfter));
-  title('after Gfter Conv');
+  title('Saltpepper noise after Gfter Conv');
  % 3 x 3 meidian filter:
  
    % ---- deal with gaussain noise image ---- %
@@ -121,18 +127,19 @@ figure;
    
    % === figure show === %
    figure;
-  subplot(2,2,1);
+  subplot(1,2,1);
   imshow(ori_gaussian_noise);
   title('Origin');
-  subplot(2,2,2);
+  subplot(1,2,2);
   imshow(uint8(g_img_by_Meifter));
-  title('after Meifter Conv');
-  subplot(2,2,3);
+  title('Gaussain noise after Meifter Conv');
+figure;  
+  subplot(1,2,1);
   imshow(ori_saltpepper_noise);
   title('Origin');
-  subplot(2,2,4);
+  subplot(1,2,2);
   imshow(uint8(s_img_by_Meifter));
-  title('after Meifter Conv');
+  title('Saltpepper noise after Meifter Conv');
  % 3 x 3 Anisotropic filter with similarity funcion of (D - d)/D:
  
    % ---- deal with gaussain noise image ---- %
@@ -147,58 +154,60 @@ figure;
    
    % === figure show === %
    figure;
-  subplot(2,2,1);
+  subplot(1,2,1);
   imshow(ori_gaussian_noise);
   title('Origin');
-  subplot(2,2,2);
+  subplot(1,2,2);
   imshow(uint8(g_img_by_Anisofter));
-  title('after Anisofter Conv');
-  subplot(2,2,3);
+  title('Gaussian noise after Anisofter Conv');
+figure;  
+  subplot(1,2,1);
   imshow(ori_saltpepper_noise);
   title('Origin');
-  subplot(2,2,4);
+  subplot(1,2,2);
   imshow(uint8(s_img_by_Anisofter));
-  title('after Anisofter Conv');
+  title('Saltpeeper noise after Anisofter Conv');
  % 5 x 5 bilteral filter with ∂s = 1 and ∂r = 10:
  
    % ---- deal with gaussain noise image ---- %
-   g_img_by_BFfter(:,:,1) = BF(ori_gaussian_noise(:,:,1),5,100,100);
-   g_img_by_BFfter(:,:,2) = BF(ori_gaussian_noise(:,:,2),5,100,100);
-   g_img_by_BFfter(:,:,3) = BF(ori_gaussian_noise(:,:,3),5,100,100);
+   g_img_by_BFfter(:,:,1) = BF(ori_gaussian_noise(:,:,1),5,1,10);
+   g_img_by_BFfter(:,:,2) = BF(ori_gaussian_noise(:,:,2),5,1,10);
+   g_img_by_BFfter(:,:,3) = BF(ori_gaussian_noise(:,:,3),5,1,10);
    
    % ---- deal with salt & pepper noise image ---- %
-   s_img_by_BFfter(:,:,1) = BF(ori_saltpepper_noise(:,:,1),5,100,100);
-   s_img_by_BFfter(:,:,2) = BF(ori_saltpepper_noise(:,:,2),5,100,100);
-   s_img_by_BFfter(:,:,3) = BF(ori_saltpepper_noise(:,:,3),5,100,100);
+   s_img_by_BFfter(:,:,1) = BF(ori_saltpepper_noise(:,:,1),5,1,10);
+   s_img_by_BFfter(:,:,2) = BF(ori_saltpepper_noise(:,:,2),5,1,10);
+   s_img_by_BFfter(:,:,3) = BF(ori_saltpepper_noise(:,:,3),5,1,10);
    
    % === figure show === %
    figure;
-  subplot(2,2,1);
+  subplot(1,2,1);
   imshow(ori_gaussian_noise);
   title('Origin');
-  subplot(2,2,2);
+  subplot(1,2,2);
   imshow(uint8(g_img_by_BFfter));
-  title('after BFfter Conv');
-  subplot(2,2,3);
+  title('Gaussian noise after BFfter Conv');
+figure;  
+  subplot(1,2,1);
   imshow(ori_saltpepper_noise);
   title('Origin');
-  subplot(2,2,4);
+  subplot(1,2,2);
   imshow(uint8(s_img_by_BFfter));
-  title('after BFofter Conv');
+  title('Saltpepper noise after BFofter Conv');
   
-  close all;
-   figure;
-  imshow(ori_gaussian_noise);
-  title('Origin');
-  figure;
-  imshow(uint8(g_img_by_BFfter));
-  title('after BFfter Conv');
-  figure;%subplot(2,2,3);
-  imshow(ori_saltpepper_noise);
-  title('Origin');
-  figure;%subplot(2,2,4);
-  imshow(uint8(s_img_by_BFfter));
-  title('after BFofter Conv');
+%   close all;
+%    figure;
+%   imshow(ori_gaussian_noise);
+%   title('Origin');
+%   figure;
+%   imshow(uint8(g_img_by_BFfter));
+%   title('after BFfter Conv');
+%   figure;%subplot(2,2,3);
+%   imshow(ori_saltpepper_noise);
+%   title('Origin');
+%   figure;%subplot(2,2,4);
+%   imshow(uint8(s_img_by_BFfter));
+%   title('after BFofter Conv');
 
   
   
