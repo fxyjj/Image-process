@@ -1,10 +1,10 @@
- %sobel operators;
- ori = rgb2gray(imread('retina_images_01_10/1.tif'));
+function [img_x,img_y,img] = sobel(d_img) %sobel operators;
+%  ori = rgb2gray(imread('retina_images_01_10/1.tif'));
 %offset = (sizef + 1)/2;
-[r,c] = size(ori);    
+[r,c] = size(d_img);    
  reb1 = [-1,0,1;-2,0,2;-1,0,1];
  reb2 = [-1,-2,-1;0,0,0;1,2,1];
-  sharped_img = zeros(r,c);
+  img = zeros(r,c);
 % for i = 2 : r-1
 %     for j = 2 : c-1
 %         fx = 0;
@@ -22,17 +22,17 @@
 %     end
 %     
 % end   
-img_x = conv2(ori,reb1,'same');
-img_y = conv2(ori,reb2,'same');
+img_x = conv2(d_img,reb1,'same');
+img_y = conv2(d_img,reb2,'same');
 for i = 1 : r
     for j = 1 : c
-        sharped_img(i,j) = double(double(img_x(i,j))^2 + double(img_y(i,j))^2)^(1/2);
+        img(i,j) = double(double(img_x(i,j))^2 + double(img_y(i,j))^2)^(1/2);
     end
 end
 
 
 
-           close all;
-           imshow(uint8(sharped_img));
-           figure;
-           imshow(ori); 
+%            close all;
+%            imshow(uint8(img));
+%            figure;
+%            imshow(ori); 

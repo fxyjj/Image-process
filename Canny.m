@@ -1,6 +1,6 @@
 %Canny
 sigma = 2;
-sizef = 7;
+sizef = 5;
 offset = (sizef+1)/2;
 gfilter = fspecial('gaussian',sizef,sigma);
 ori = rgb2gray(imread('retina_images_01_10/1.tif'));
@@ -29,7 +29,7 @@ tanM = zeros(r,c);
 for t1 = 1 : r
     for t2 = 1 : c
         check = atan(img_y(t1,t2)/img_x(t1,t2));
-        tanM1(t1,t2) = check;
+        tanM(t1,t2) = check;
         if 0 < check && check <= pi/8 || 7*pi/8 < check && check < pi
             tanM(t1,t2) = 0;
         else 
@@ -112,33 +112,33 @@ imshow(new_img);
 figure;
 imshow(M_img);
 
-BW2 = edge(ori,'canny');
-figure(6);
-imshow(BW2);
-
-
-ht = 0.3;
-lt = 0.15;
-M2_img = zeros(r,c);
-for e1 = 2 : r-2
-    for e2 = 2: c-2
-        if M_img(e1,e2) < ht && M_img(e1,e2) >= lt
-            for e3 = 1 : 3
-                for e4 = 1 : 3
-                    if M_img(e1+e3-2,e2+e4-2) >= ht
-                        M2_img(e1,e2) = M_img(e1,e2);
-                    end
-                end
-            end
-        else
-            if M_img(e1,e2) >= ht
-                M2_img(e1,e2) = M_img(e1,e2);
-            end
-        end
-    end
-end
-figure;
-imshow(M2_img);
+% BW2 = edge(ori,'canny');
+% figure(6);
+% imshow(BW2);
+% 
+% 
+% ht = 0.3;
+% lt = 0.15;
+% M2_img = zeros(r,c);
+% for e1 = 2 : r-2
+%     for e2 = 2: c-2
+%         if M_img(e1,e2) < ht && M_img(e1,e2) >= lt
+%             for e3 = 1 : 3
+%                 for e4 = 1 : 3
+%                     if M_img(e1+e3-2,e2+e4-2) >= ht
+%                         M2_img(e1,e2) = M_img(e1,e2);
+%                     end
+%                 end
+%             end
+%         else
+%             if M_img(e1,e2) >= ht
+%                 M2_img(e1,e2) = M_img(e1,e2);
+%             end
+%         end
+%     end
+% end
+% figure;
+% imshow(M2_img);
                        
             
 
