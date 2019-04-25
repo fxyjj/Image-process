@@ -1,4 +1,4 @@
-clc;close all;clear all;  
+clc;close all;  
 I=imread ('retina_images_01_10/1.tif');  
 mask = imread('mask_images/1.tif');
 I=double(rgb2gray(I));  

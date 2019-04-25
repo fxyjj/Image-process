@@ -52,9 +52,9 @@ ALLangles=zeros([size(I) length(sigmas)]);
 % Frangi filter for all sigmas  
 for i = 1:length(sigmas)  
     % Show progress  
-    if(options.verbose)  
-        disp(['Current Frangi Filter Sigma: ' num2str(sigmas(i)) ]);  
-    end  
+%     if(options.verbose)  
+%        disp(['Current Frangi Filter Sigma: ' num2str(sigmas(i)) ]);  
+%     end  
       
     % Make 2D hessian  
     [Dxx,Dxy,Dyy] = Hessian2D(I,sigmas(i));  

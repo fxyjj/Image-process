@@ -29,7 +29,7 @@ tanM = zeros(r,c);
 for t1 = 1 : r
     for t2 = 1 : c
         check = atan(img_y(t1,t2)/img_x(t1,t2));
-        tanM(t1,t2) = check;
+        tanM1(t1,t2) = check;
         if 0 < check && check <= pi/8 || 7*pi/8 < check && check < pi
             tanM(t1,t2) = 0;
         else 
@@ -112,9 +112,9 @@ imshow(new_img);
 figure;
 imshow(M_img);
 
-% BW2 = edge(ori,'canny');
-% figure(6);
-% imshow(BW2);
+ BW2 = edge(ori,'canny');
+ figure;
+ imshow(BW2);
 % 
 % 
 % ht = 0.3;
