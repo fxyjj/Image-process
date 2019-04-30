@@ -1,4 +1,9 @@
 function [Lambda1,Lambda2,Ix,Iy]=eig2image(Dxx,Dxy,Dyy)
+%% --------------------- 
+% 作者：Naruto_Qing 
+% 来源：CSDN 
+% 原文：https://blog.csdn.net/piaoxuezhong/article/details/78428785 
+% 版权声明：本文为博主原创文章，转载请附上博文链接！
 % This function eig2image calculates the eigen values from the
 % hessian matrix, sorted by abs value. And gives the direction
 % of the ridge (eigenvector smallest eigenvalue) .
@@ -9,7 +14,7 @@ function [Lambda1,Lambda2,Ix,Iy]=eig2image(Dxx,Dxy,Dyy)
 % | Dxx  Dxy |
 % |          |
 % | Dxy  Dyy |
-% Compute the eigenvectors of J, v1 and v2
+%% Compute the eigenvectors of J, v1 and v2
 tmp = sqrt((Dxx - Dyy).^2 + 4*Dxy.^2);
 v2x = 2*Dxy; v2y = Dyy - Dxx + tmp;
 
@@ -34,8 +39,3 @@ Lambda2=mu2; Lambda2(check)=mu1(check);
 
 Ix=v1x; Ix(check)=v2x(check);
 Iy=v1y; Iy(check)=v2y(check);
-% --------------------- 
-% 作者：Naruto_Qing 
-% 来源：CSDN 
-% 原文：https://blog.csdn.net/piaoxuezhong/article/details/78428785 
-% 版权声明：本文为博主原创文章，转载请附上博文链接！

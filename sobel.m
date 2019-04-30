@@ -32,7 +32,7 @@ end
 
 
 
-%             close all;
-%             imshow(uint8(img));
-%             figure;
-%             imshow(ori); 
+             close all;
+             imshow(uint8(img));
+              
+end

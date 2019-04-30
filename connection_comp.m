@@ -1,10 +1,16 @@
 function m_img = connection_comp(I,t)%receive only binarized image
-% I = img2eee;
-% t = 100;
+%%
+% this function aims to reduce the noise pixels in the binarized image 
+% firstly, find the white pixels and use numbers to mark them, the mark
+% strategy is, use the same number to mark the pixels in Adjacency.
+% m_img is the processed image used as the output
+%r, row of the origin image
+%c, column of the origin image
+%%
 [r,c] = size(I);
 m_img = zeros(r,c);
-% c_img = zeros(r,c);
 char = 2;
+%mark the white region with numbers
 for i = 2 : r
     for j = 2 : c
         if I(i,j) == 1
@@ -33,7 +39,8 @@ for i = 2 : r
         end
     end
 end
-
+% calculate pixels of each region and translate the timy region into
+% background if their size is less than a certain range t.
 for x = 2 : r-1
     for y = 2 : c-1
        cen = m_img(x,y);
@@ -57,12 +64,8 @@ for i = 2 : max(max(m_img))
         m_img(m_img==i) = 0;
     end
 end
- m_img(m_img ~= 0) = 1;
-%  figure;
-%  imshow(m_img);
-%  figure;
-%  imshow(I);
- end
+m_img(m_img ~= 0) = 1;
+end
     
 
 

@@ -1,5 +1,9 @@
 function e_img = erosion(I)%only receive binarized image
-% sizef = 3;
+%%
+%s_img, out image
+%r,row of the origin image
+%c,column of the origin image
+%%
 [r,c] = size(I);
 e_img = zeros(r,c);
 e_img(:,:) = 1;

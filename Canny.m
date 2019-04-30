@@ -1,10 +1,9 @@
-%Canny
+function new_img = Canny(ori)
 sigma = 2;
 sizef = 5;
 offset = (sizef+1)/2;
 gfilter = fspecial('gaussian',sizef,sigma);
-ori = rgb2gray(imread('retina_images_01_10/1.tif'));
-% ori = new_img1;
+%ori = rgb2gray(imread('retina_images_01_10/1.tif'));
 [r,c] = size(ori);
 img_conv_by_g = conv2(ori,gfilter,'same');
 gfilter_x = zeros(sizef,sizef);
@@ -92,63 +91,11 @@ for s1 = 2 : r-1
         end
     end
 end
-% M_img = mat2gray(M_img);
-% M_img = im2uint8(M_img);
-
-
-%dilation(new_img);
-close all;
-figure;
-imshow(uint8(img_conv_by_g));
-figure;
-subplot(1,2,1);
-imshow(img_x);
-title('x');
-subplot(1,2,2);
-imshow(img_y);
-title('y');
+%close all;
 figure;
 imshow(new_img);
-figure;
-imshow(M_img);
-
- BW2 = edge(ori,'canny');
- figure;
- imshow(BW2);
-% 
-% 
-% ht = 0.3;
-% lt = 0.15;
-% M2_img = zeros(r,c);
-% for e1 = 2 : r-2
-%     for e2 = 2: c-2
-%         if M_img(e1,e2) < ht && M_img(e1,e2) >= lt
-%             for e3 = 1 : 3
-%                 for e4 = 1 : 3
-%                     if M_img(e1+e3-2,e2+e4-2) >= ht
-%                         M2_img(e1,e2) = M_img(e1,e2);
-%                     end
-%                 end
-%             end
-%         else
-%             if M_img(e1,e2) >= ht
-%                 M2_img(e1,e2) = M_img(e1,e2);
-%             end
-%         end
-%     end
-% end
+end
+% build in function in Matlab
+% BW2 = edge(ori,'canny');
 % figure;
-% imshow(M2_img);
-                       
-            
-
-
-
-        
-        
-        
-        
-        
-        
-        
-        
+% imshow(BW2);

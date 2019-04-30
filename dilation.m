@@ -1,5 +1,9 @@
 function d_img = dilation(I) %receive only binaried image
-% sizef = 3;
+%%
+%d_img, out image
+%r,row of the origin image
+%c,column of the origin image
+%%
 [r,c] = size(I);
 d_img = zeros(r,c);
 for i = 2 : r-1

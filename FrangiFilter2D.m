@@ -1,5 +1,10 @@
 function [outIm,whatScale,Direction] = FrangiFilter2D(I, options)  
-% This function FRANGIFILTER2D uses the eigenvectors of the Hessian to  
+%% --------------------- 
+% 作者：Naruto_Qing 
+% 来源：CSDN 
+% 原文：https://blog.csdn.net/piaoxuezhong/article/details/78428785 
+% 版权声明：本文为博主原创文章，转载请附上博文链接！
+%% This function FRANGIFILTER2D uses the eigenvectors of the Hessian to  
 % compute the likeliness of an image region to vessels, according  
 % to the method described by Frangi:2001 (Chapter 2).  
 % [J,Scale,Direction] = FrangiFilter2D(I, Options)  
@@ -24,7 +29,7 @@ function [outIm,whatScale,Direction] = FrangiFilter2D(I, options)
   
 defaultoptions = struct('FrangiScaleRange', [0.05 5], 'FrangiScaleRatio', 0.05, 'FrangiBetaOne', 0.5, 'FrangiBetaTwo', 15, 'verbose',true,'BlackWhite',true);  
   
-% Process inputs  
+%% Process inputs  
 if(~exist('options','var'))   
     options=defaultoptions;   
 else  
@@ -109,8 +114,3 @@ else
         Direction = reshape(ALLangles,size(I));  
     end  
 end  
-% --------------------- 
-% 作者：Naruto_Qing 
-% 来源：CSDN 
-% 原文：https://blog.csdn.net/piaoxuezhong/article/details/78428785 
-% 版权声明：本文为博主原创文章，转载请附上博文链接！

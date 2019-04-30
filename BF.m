@@ -1,10 +1,7 @@
 function img = BF(I,sizef,s1,s2)
-% I = ori_gray;
-%s1 = 100;
-%s2 = 100;
-%sizef = 3;
 sigmaG = s1;
 sigmaR = s2;
+%space filter outside the loop
 f_coeff = G_Filter(sigmaG,sizef);
 offset = (sizef + 1)/2;
 [r,c] = size(I);
@@ -13,6 +10,7 @@ new_I(offset:r+offset-1,offset:c+offset-1) = I;
 img = zeros(r,c);
 for i = offset : r+offset-1
     for j = offset : c+offset-1
+        % range filter inside the loop
         lf = zeros(sizef,sizef);
         cen = new_I(i,j);
         for x = 1 : sizef
@@ -29,4 +27,5 @@ for i = offset : r+offset-1
         genzi = sum(sum(lf));
         img(i-offset+1,j-offset+1) = all_sum/genzi;
     end
+end
 end

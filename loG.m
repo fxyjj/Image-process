@@ -1,6 +1,7 @@
 %loG
+function loG(ori)
 g1filter = fspecial('gaussian',7,1);
-ori = rgb2gray(imread('retina_images_01_10/1.tif'));
+%ori = rgb2gray(imread('retina_images_01_10/1.tif'));
 img_con_by_g1 = conv2(ori,g1filter,'same');
 lapf = [0,-1,0;-1,4,-1;0,-1,0];
 img = conv2(img_con_by_g1,lapf,'same');

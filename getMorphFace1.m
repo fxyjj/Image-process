@@ -1,29 +1,20 @@
 function img = getMorphFace1(bImg)
+%reduce image noise using connection_comp.m
 img_conn = connection_comp(bImg,15);
-% figure;
-% imshow(img_conn);
+%dilation operations
 img2d = dilation(img_conn);
-% figure;
-% imshow(img2d);
+%reduce teh noise again
 img2d_conn = connection_comp(img2d,40);
-% figure;
-% imshow(img2d_conn);
+%erosion operation
 img2e = erosion(img2d_conn);
-% figure;
-% imshow(img2e);
-% img2dd = dilation(img2d_conn);
+%reduce noise
 img2e_conn = connection_comp(img2e,80);
-% figure;
-% imshow(img2e_conn);
-% img2e = erosion(BinarizedFaceImage);
+%erosoin operation
 img2ee = erosion(img2e_conn);
-% figure;
-% imshow(img2ee);
+%reduce noise
 img2ee_conn = connection_comp(img2ee,12);
-% figure;
-% imshow(img2ee_conn);
+%dilation operation
 img22d = dilation(dilation(dilation(dilation(img2ee_conn))));
-% figure;
-% imshow(img22d);
-% figure;
+%reduce noise
 img = connection_comp(img22d,400);
+end

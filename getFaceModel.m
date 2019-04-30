@@ -1,13 +1,13 @@
 function C = getFaceModel(ori)
-% clear all;
-% close all;
-% ori = imread(fileURL);
-%ori = imread('face2.jpg');
+%%
+% s,start range of teh cluster set, there are ten cluster set in total,from
+% 0,0.1,0.2 ... 1 
+% e, end range of the cluster set.
+% mat, sluster set
+% 
+%%
 hsv_img = rgb2hsv(ori);
-% cluster_H = zeros(3,20);
-% cluster_S = zeros(3,20);
-% s = [1,501,1001,1501,2001,2501,3001,3501,4001,4501,5001,5501,6001,6501,7001,7501,8001,8501,9001,9501];
-% e = [500,1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000,8500,9000,9500,10000];
+%cluster set, 0 ~ 1, here multiple with 10000 for better observe
 s = [1,1001,2001,3001,4001,5001,6001,7001,8001,9001];
 e = [1000,2000,3000,4000,5000,6000,7000,8000,9000,10000];
 
@@ -36,8 +36,9 @@ for i = 1 : x
 end
 figure;
 bar3(mat);
-
-maxR = max(max(mat));
+%%
+%find the highest two cluster set to be the out put as teh HSV cluster set.
+maxR = max(max(mat));% highest value in the cluster, here is try to find teh cluster set that the most pixel dropped in, which represent teh face cluster set
 [Cs,Ce] = find(mat == maxR);
 mat(Cs,Ce) = 0;
 [Cs2,Ce2] = find(mat == max(max(mat)));
@@ -46,3 +47,4 @@ Sc = [s(1,Ce),e(1,Ce)];
 Hc1 = [s(1,Cs2),e(1,Cs2)];
 Sc1 = [s(1,Ce2),e(1,Ce2)];
 C = [Hc,Sc;Hc1,Sc1];
+end

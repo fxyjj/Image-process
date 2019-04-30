@@ -1,4 +1,9 @@
 function [Dxx,Dxy,Dyy] = Hessian2D(I,Sigma)
+%% --------------------- 
+% 作者：Naruto_Qing 
+% 来源：CSDN 
+% 原文：https://blog.csdn.net/piaoxuezhong/article/details/78428785 
+% 版权声明：本文为博主原创文章，转载请附上博文链接！
 %  This function Hessian2 Filters the image with 2nd derivatives of a 
 %  Gaussian with parameter Sigma.
 % 
@@ -16,7 +21,7 @@ function [Dxx,Dxy,Dyy] = Hessian2D(I,Sigma)
 %   [Dxx,Dxy,Dyy] = Hessian2(I,2);
 %   figure, imshow(Dxx,[]);
 %
-% Function is written by D.Kroon University of Twente (June 2009)
+%% Function is written by D.Kroon University of Twente (June 2009)
 
 if nargin < 2, Sigma = 1; end
 
