@@ -1,8 +1,10 @@
+function [P,N,T] = task3main()
+
 clc;
 close all;  
-I=imread ('retina_images_01_10/1.tif');  
-mask = imread('mask_images/1.tif');
-label = imread('label_images/1.tif');
+I=imread ('1.tif');  
+mask = imread('mask.tif');
+label = imread('label.tif');
 vessel_region = sum(label(:) == 255);
 background_region = sum(label(:) == 0) - sum(mask(:) == 0);
 I=double(rgb2gray(I)); 
@@ -72,3 +74,4 @@ DoG(I);
 
 %% process image with Canny filter(unfinished)
 Canny(I);
+end

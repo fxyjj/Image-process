@@ -17,7 +17,7 @@ img3 = conv2(img_con_by_g3,lapf,'same');
 g4filter = fspecial('gaussian',7,4);
 img_con_by_g4 = conv2(ori,g4filter,'same');
 img4 = conv2(img_con_by_g4,lapf,'same');
-close all;
+%close all;
 figure;
 subplot(2,2,1);
 imshow(img);

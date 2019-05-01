@@ -1,5 +1,6 @@
 %task1
 %generate the clusters of face pixels for face1.jpg
+function task1main()
 close all;
 testImg = imread('face1.jpg');
 url = imread('training_face_image/train15.jpg');
@@ -28,3 +29,4 @@ imshow(FinalFaceImage);
  FinalFaceImage2 = getMorphFace2(BinarizedFaceImage2);
  figure;
  imshow(FinalFaceImage2);
+end

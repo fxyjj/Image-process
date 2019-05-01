@@ -1,4 +1,11 @@
 function img = Anisotropic(I,sizef)
+%%
+% size_I, the matrix used to contain the calculated value, when finally put
+% the value in here into the out put image matrix
+% offset, the size to padding the image for convolution
+% Af, an sizef x sizef matrix cantain the difference
+% D, the max pixel value difference between the current pixel and the adjacent pixels. 
+%%
 [r,c] = size(I);% get the size of the image
 offset = (sizef+1)/2;% used to shift the filter on the image  
 new_I = zeros(r+sizef-1,c+sizef-1);%add 0 range to the image

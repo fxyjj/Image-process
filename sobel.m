@@ -32,7 +32,7 @@ end
 
 
 
-             close all;
+             %close all;
              imshow(uint8(img));
               
 end

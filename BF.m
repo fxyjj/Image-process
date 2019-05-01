@@ -1,6 +1,6 @@
 function img = BF(I,sizef,s1,s2)
-sigmaG = s1;
-sigmaR = s2;
+sigmaG = s1;% space sigma
+sigmaR = s2;% range sigma
 %space filter outside the loop
 f_coeff = G_Filter(sigmaG,sizef);
 offset = (sizef + 1)/2;
